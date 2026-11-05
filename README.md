@@ -6,7 +6,9 @@ and WebGPU.
 ## Prerequisites
 
 - [bake3](https://github.com/SanderMertens/bake3)
-- flecs checked out at `../../flecs` and built once with `bake3 ../../flecs`
+- flecs checked out at `../../flecs` on branch `script_authoring_improvements` and built once
+  with `bake3 ../../flecs`. The scenes use script features (`T[N]` variables, `+=`, `a[i] = e`,
+  `proc`) that `master` does not have yet.
 - A Rust toolchain
 
 ## Build
