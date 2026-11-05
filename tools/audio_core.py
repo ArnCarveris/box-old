@@ -59,7 +59,7 @@ def find_clang():
     config = shutil.which("em-config")
     if config:
         result = subprocess.run([config, "LLVM_ROOT"], capture_output=True, text=True)
-        path = os.path.join(result.stdout.strip(), "clang")
+        path = os.path.join(result.stdout.strip(), ("clang.exe" if os.name == "nt" else "clang"))
         if result.returncode == 0 and os.path.exists(path):
             return path
     emcc = shutil.which("emcc")
@@ -68,7 +68,7 @@ def find_clang():
         if os.environ.get(var):
             roots.append(os.path.join(os.environ[var], "upstream"))
     for root in roots:
-        path = os.path.join(root, "bin", "clang")
+        path = os.path.join(root, "bin", ("clang.exe" if os.name == "nt" else "clang"))
         if os.path.exists(path):
             return path
     return None
